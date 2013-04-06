@@ -4,7 +4,6 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
 /**
- * Override find, findAll method to Row.
  * @author yosuke
  *
  */

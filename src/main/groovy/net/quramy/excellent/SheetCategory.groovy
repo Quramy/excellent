@@ -22,7 +22,7 @@ class SheetCategory {
 		return res
 	}
 	
-	Collection<?> findCellAll(Closure<?> closure){
+	Collection<Cell> findCellAll(Closure<?> closure){
 		List<Cell> res = []
 		int s = this.firstRowNum
 		int e = this.lastRowNum

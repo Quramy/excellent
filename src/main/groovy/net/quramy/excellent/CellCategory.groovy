@@ -2,6 +2,7 @@ package net.quramy.excellent
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.jggug.kobo.gexcelapi.CellRange
 
 /**
  * Expand Cell.
@@ -28,13 +29,28 @@ class CellCategory {
 	Cell getDown(){
 		return getVertical(this, 1)
 	}
-	
+
 	Cell plus(int offset){
 		return getHorizontal(this, offset)
 	}
-	
+
 	Cell minus(int offset){
 		return getHorizontal(this, -offset)
+	}
+
+	CellRange minus(Cell offset){
+		Cell a = this, b = offset
+		if(!a || !b || a.sheet != b.sheet){
+			return null
+		}
+
+		int top, bottom, left, right
+		top = Math.min(a.rowIndex, b.rowIndex)
+		bottom = Math.max(a.rowIndex, b.rowIndex)
+		left = Math.min(a.columnIndex, b.columnIndex)
+		right = Math.max(a.columnIndex, b.columnIndex)
+
+		return new CellRange(this.sheet, top, left, bottom, right)
 	}
 
 	private static Cell getHorizontal(Cell ref, int offset){

@@ -8,15 +8,15 @@ import org.junit.Test;
 
 
 class CellCategoryTest extends GroovyTestCase{
-	
-	def Sheet sheet 
+
+	def Sheet sheet
 
 	@Before
 	@Override
 	void setUp(){
 		sheet = Excellent.open("src/test/resources/test.xlsx").Transition
 	}
-	
+
 	@Test
 	void testLeft01(){
 		assertEquals("left", sheet.B2.left.value)
@@ -49,7 +49,7 @@ class CellCategoryTest extends GroovyTestCase{
 	void testDown02(){
 		assertEquals("A4", sheet.A2.down.down.label)
 	}
-	
+
 	@Test
 	void testPlus01(){
 		assertEquals("B1", (sheet.A1 + 1).label);
@@ -61,5 +61,12 @@ class CellCategoryTest extends GroovyTestCase{
 	@Test
 	void testMinus02(){
 		assertEquals("A1", (sheet.A1 - 1).label);
+	}
+
+	@Test
+	void testMinusCell01(){
+		assertEquals(["A1B1", "A2B2", "A3B3"], (sheet.A1 - sheet.B3).collect{
+			it.inject(""){acc2, that -> acc2 + that.label}
+		})
 	}
 }
