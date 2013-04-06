@@ -34,7 +34,7 @@ class CellCategory {
 	}
 	
 	Cell minus(int offset){
-		return getHorizontal(this, offset)
+		return getHorizontal(this, -offset)
 	}
 
 	private static Cell getHorizontal(Cell ref, int offset){
