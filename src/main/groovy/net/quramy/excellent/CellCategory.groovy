@@ -1,6 +1,7 @@
 package net.quramy.excellent
 
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 /**
  * Expand Cell.
@@ -11,28 +12,43 @@ import org.apache.poi.ss.usermodel.Cell;
  */
 @Category(Cell)
 class CellCategory {
-	
+
 	Cell getLeft(){
-		if(this.columnIndex > 0){
-			return this.row.getCell(this.columnIndex - 1)
-		}else{
-			return this
-		}
+		return getHorizontal(this, -1)
 	}
 
 	Cell getRight(){
-		return this.row.getCell(this.columnIndex + 1)
+		return getHorizontal(this, 1)
 	}
 
 	Cell getUp(){
-		if(this.rowIndex  > 0){
-			return this.row.sheet.getRow(this.rowIndex - 1).getCell(this.columnIndex)
-		}else{
-			return this
-		}
+		return getVertical(this, -1)
 	}
 
 	Cell getDown(){
-		return this.row.sheet.getRow(this.rowIndex + 1).getCell(this.columnIndex)
+		return getVertical(this, 1)
+	}
+
+	private static Cell getHorizontal(Cell ref, int offset){
+		if(ref == null){
+			return null
+		}
+		if(ref.columnIndex + offset >= 0){
+			return ref.row.getCell(ref.columnIndex + offset, Row.CREATE_NULL_AS_BLANK)
+		}else{
+			return ref
+		}
+	}
+
+	private static Cell getVertical(Cell ref, int offset){
+		if(ref == null){
+			return null
+		}
+		int pos = ref.rowIndex + offset
+		if(pos < 0){
+			return ref
+		}
+		Row refRow = ref.sheet.getRow(pos) ?: ref.sheet.createRow(pos)
+		return refRow.getCell(ref.columnIndex, Row.CREATE_NULL_AS_BLANK)
 	}
 }
