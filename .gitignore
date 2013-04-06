@@ -8,5 +8,6 @@ target
 .settings/
 *.swp
 *.swo
+*.~lock.*
 .DS_Store
 
