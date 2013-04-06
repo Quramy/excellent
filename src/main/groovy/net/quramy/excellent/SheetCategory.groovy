@@ -7,7 +7,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 @Category(Sheet)
 class SheetCategory {
 	
-	Object find(Closure<?> closure){
+	Cell findCell(Closure<?> closure){
 		Cell res = null
 		int s = this.firstRowNum
 		int e = this.lastRowNum
@@ -22,7 +22,7 @@ class SheetCategory {
 		return res
 	}
 	
-	Collection<?> findAll(Closure<?> closure){
+	Collection<?> findCellAll(Closure<?> closure){
 		List<Cell> res = []
 		int s = this.firstRowNum
 		int e = this.lastRowNum

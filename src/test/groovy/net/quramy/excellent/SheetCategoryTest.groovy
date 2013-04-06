@@ -10,30 +10,30 @@ import org.junit.Test;
 class SheetCategoryTest extends GroovyTestCase{
 
 	@Test
-	void testFind01(){
+	void testFindCell01(){
 		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
-		Cell cell = sheet.find{it=~/edge/}
+		Cell cell = sheet.findCell{it=~/edge/}
 		assertEquals("A1", cell.label)
 	}
 	
 	@Test
-	void testFind02(){
+	void testFindCell02(){
 		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
 		Cell cell = sheet.find{it=~/nobody/}
 		assertNull(cell)
 	}
 	
 	@Test
-	void testFindAll01(){
+	void testFindCellAll01(){
 		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
-		def res = sheet.findAll{it=~/edge/}
+		def res = sheet.findCellAll{it=~/edge/}
 		assertEquals(["A1", "D6"],  res*.label)
 	}
 	
 	@Test
-	void testFindAll02(){
+	void testFindCellAll02(){
 		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
-		def res = sheet.findAll{it=~/nobody/}
+		def res = sheet.findCellAll{it=~/nobody/}
 		assertEquals([],  res*.label)
 	}
 	
