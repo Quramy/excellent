@@ -3,8 +3,18 @@ package net.quramy.excellent
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 
+/**
+ * Override find, findAll method to Row.
+ * @author yosuke
+ *
+ */
 @Category(Row)
 class RowCategory {
+	/**
+	 * 
+	 * @param closure
+	 * @return
+	 */
 	Object find(Closure<?> closure){
 		int s = this.firstCellNum
 		int e = this.lastCellNum

@@ -24,6 +24,20 @@ class SheetCategoryTest extends GroovyTestCase{
 	}
 	
 	@Test
+	void testFindAll01(){
+		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
+		def res = sheet.findAll{it=~/edge/}
+		assertEquals(["A1", "D6"],  res*.label)
+	}
+	
+	@Test
+	void testFindAll02(){
+		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
+		def res = sheet.findAll{it=~/nobody/}
+		assertEquals([],  res*.label)
+	}
+	
+	@Test
 	void testTop01(){
 		Sheet sheet = Excellent.open("src/test/resources/test.xlsx").Transition
 		assertTrue sheet.getRow(0) == sheet.top

@@ -22,6 +22,16 @@ class SheetCategory {
 		return res
 	}
 	
+	Collection<?> findAll(Closure<?> closure){
+		List<Cell> res = []
+		int s = this.firstRowNum
+		int e = this.lastRowNum
+		for(int i = s; i <= e; i++){
+			res.addAll(this.getRow(i)?.findAll(closure) ?: [])
+		}
+		return res
+	}
+	
 	Row getTop(){
 		return this?.getRow(this.firstRowNum)
 	}

@@ -5,7 +5,7 @@ import org.apache.poi.ss.usermodel.Row;
 
 /**
  * Expand Cell.
- * Provide transition methods(up, down, left, right).
+ * Provide transition methods(up, down, left, right, + x, -x, Cell a - Cell b).
  * 
  * @author Quramy
  *
@@ -27,6 +27,14 @@ class CellCategory {
 
 	Cell getDown(){
 		return getVertical(this, 1)
+	}
+	
+	Cell plus(int offset){
+		return getHorizontal(this, offset)
+	}
+	
+	Cell minus(int offset){
+		return getHorizontal(this, offset)
 	}
 
 	private static Cell getHorizontal(Cell ref, int offset){

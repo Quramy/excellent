@@ -5,6 +5,11 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.jggug.kobo.gexcelapi.GExcel;
 
+/**
+ * Help you to manipulate spreadsheets.
+ * @author yosuke
+ *
+ */
 class Excellent {
 
 	static{
